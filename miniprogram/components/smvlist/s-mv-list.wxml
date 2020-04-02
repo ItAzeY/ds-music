@@ -6,7 +6,7 @@
     <view class="mv_list_title">{{item.mvtitle}}</view>
     <view class="mv_list_info">
       <text class="mv_list_singername">{{item.singername}}</text>
-      <text class="mv_list_listennum">{{common.formatCount(item.listennum)}}</text>
+      <text class="mv_list_listennum icon icon-shipin">{{common.formatCount(item.listennum)}}</text>
     </view>
   </view>
 </view>

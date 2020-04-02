@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let cookie = 'tvfe_boss_uuid=65b4490b214d4bcf; pgv_pvid=7978271646; pgv_pvi=1785401344; RK=PETYse1oEb; ptcz=47252b904b01d588535a6c535db7ffb8b16410638fb6f16b05c1a51af42c56ec; eas_sid=f1N5A7W7D1b6N6G1a9e4s2k0Z7; pac_uid=0_5e040711d6ad3; LW_uid=s1E5W7r9s8R5p784c9C4L1k1H6; LW_sid=E1L5E759N8i5m755Z4A3K181w5; uin_cookie=o0953463876; ied_qq=o0953463876; o_cookie=953463876; _ga=GA1.2.834508764.1580778480; ptui_loginuin=953463876; mobileUV=1_170cf62778b_5c7b6; pgv_si=s5081336832; pgv_info=ssid=s2776672068; ts_uid=2194113020; player_exist=1; ts_refer=www.google.com/; userAction=1; uin=o0953463876; skey=@jOzpxHFlz; qqmusic_uin=; qqmusic_key=; uid=162086808; yq_playschange=0; yq_playdata=; qqmusic_fromtag=66; yq_index=0; yplayer_open=0; yqq_stat=0; ts_last=y.qq.com/'
+    let cookie = 'tvfe_boss_uuid=65b4490b214d4bcf; pgv_pvid=7978271646; pgv_pvi=1785401344; RK=PETYse1oEb; ptcz=47252b904b01d588535a6c535db7ffb8b16410638fb6f16b05c1a51af42c56ec; eas_sid=f1N5A7W7D1b6N6G1a9e4s2k0Z7; pac_uid=0_5e040711d6ad3; LW_uid=s1E5W7r9s8R5p784c9C4L1k1H6; LW_sid=E1L5E759N8i5m755Z4A3K181w5; uin_cookie=o0953463876; ied_qq=o0953463876; o_cookie=953463876; _ga=GA1.2.834508764.1580778480; ptui_loginuin=953463876; mobileUV=1_170cf62778b_5c7b6; pgv_si=s5081336832; pgv_info=ssid=s2776672068; ts_uid=2194113020; player_exist=1; ts_refer=www.google.com/; userAction=1; uin=o0953463876; skey=@jOzpxHFlz; qqmusic_uin=; qqmusic_key=; uid=162086808; yq_playschange=0; yq_playdata=; qqmusic_fromtag=66; yq_index=0; yplayer_open=0; yqq_stat=0; ts_last=y.qq.com/n/yqq/toplist/26.html'
     let _this = this
     // 总接口
     wx.request({
@@ -52,7 +52,7 @@ Page({
     })
     // 歌曲推荐的接口
     wx.request({
-      url: 'https://u.y.qq.com/cgi-bin/musics.fcg?-=getUCGI07444261619080339&g_tk=1484196593&sign=zzanpuzkcuocbrzolo5faa56a6bccf99d176751b5b38850469&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A26%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222020_13%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D',
+      url: 'https://u.y.qq.com/cgi-bin/musics.fcg?-=getUCGI07444261619080339&g_tk=1484196595&sign=zzanpuzkcuocbrzolo5faa56a6bccf99d176751b5b38850469&loginUin=953463876&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A26%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222020_13%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D',
       header: {
         'cookie': cookie
       },
@@ -75,7 +75,6 @@ Page({
       method: 'GET',
       success: function(res) {
         if(res.statusCode == 200) {
-          console.log(res)
           var list = res.data.data.mvlist.slice(0,6)
           _this.setData({
             mvlist: list,
