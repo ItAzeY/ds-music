@@ -1,0 +1,26 @@
+/* components/smvlist/s-mv-list.wxss */
+.mv_list {
+  width: 100%;
+}
+
+.mv_list_info {
+  display: flex;
+  justify-content: space-between;
+  top: 10rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+.mv_list_info text{
+  line-height: 2;
+}
+
+.mv_list image {
+  width: 100%;
+  height: 200px;
+}
+
+.mv_list_title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #000;
+}

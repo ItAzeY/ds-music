@@ -8,6 +8,8 @@
     "van-field": "@vant/weapp/field",
     "s-card": "./components/scard/card",
     "s-list": "./components/slist/list",
+    "s-playlist": "/components/playlist/playlist",
+    "s-mv-list": "./components/smvlist/s-mv-list",
     "van-skeleton": "@vant/weapp/skeleton"
   },
   "window": {

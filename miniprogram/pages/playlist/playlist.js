@@ -11,7 +11,9 @@ Page({
     playlist: [],
     songlist:[],
     newSong: [],
-    newAlbum:[]
+    newAlbum:[],
+    mvlist:[],
+    mv_loading: true
   },
 
   /**
@@ -51,6 +53,9 @@ Page({
     // 歌曲推荐的接口
     wx.request({
       url: 'https://u.y.qq.com/cgi-bin/musics.fcg?-=getUCGI07444261619080339&g_tk=1484196593&sign=zzanpuzkcuocbrzolo5faa56a6bccf99d176751b5b38850469&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A26%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222020_13%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D',
+      header: {
+        'cookie': cookie
+      },
       success: function(res) {
         if(res.statusCode == 200) {
           var list = res.data.detail.data.songInfoList.slice(0,5)
@@ -60,6 +65,21 @@ Page({
           _this.setData({
             songlist: list,
             hot_loading: false
+          })
+        } 
+      }
+    })
+    // mvList 接口
+    wx.request({
+      url: 'https://c.y.qq.com/mv/fcgi-bin/getmv_by_tag?g_tk_new_20200303=1141576914&g_tk=1141576914&loginUin=953463876&hostUin=0&format=json&inCharset=utf8&outCharset=GB2312&notice=0&platform=yqq.json&needNewCode=0&cmd=shoubo&lan=all',
+      method: 'GET',
+      success: function(res) {
+        if(res.statusCode == 200) {
+          console.log(res)
+          var list = res.data.data.mvlist.slice(0,6)
+          _this.setData({
+            mvlist: list,
+            mv_loading: false
           })
         } 
       }

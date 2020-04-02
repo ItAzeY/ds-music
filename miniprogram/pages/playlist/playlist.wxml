@@ -52,4 +52,12 @@
 		</s-card>
 	</van-skeleton>
 
+	<van-skeleton title row="12" loading="{{mv_loading}}">
+		<s-card title="MV" rightBtn="true">
+			<block wx:for="{{mvlist}}" wx:for-index="idx" wx:for-item="itemName">
+				<s-mv-list item="{{itemName}}"></s-mv-list>
+			</block>
+		</s-card>
+	</van-skeleton>
+
 </view>
