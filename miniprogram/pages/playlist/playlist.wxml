@@ -6,10 +6,10 @@
 		</view>
 	</van-skeleton>
 
-	<van-skeleton title row="16" loading="{{loading}}">
-		<s-card title="热门推荐" rightBtn="true">
-			<block wx:for="{{songlist}}">
-				<s-list item="{{item}}" index="{{index}}" class="song_list"></s-list>
+	<van-skeleton title row="18" loading="{{loading}}">
+		<s-card title="排行榜" rightBtn="true">
+			<block wx:for="{{toplist}}">
+				<s-top-list item="{{item}}" index="{{index}}" class="song_list"></s-top-list>
 			</block>
 		</s-card>
 	</van-skeleton>
@@ -37,16 +37,6 @@
 			<view class="playlist-container">
 				<block wx:for="{{playlist}}" wx:for-index="idx" wx:for-item="itemName">
 					<s-playlist playlist="{{itemName}}" class="playlist_item"></s-playlist>
-				</block>
-			</view>
-		</s-card>
-	</van-skeleton>
-
-	<van-skeleton title row="16" loading="{{new_loading}}">
-		<s-card title="新碟首发" rightBtn="true">
-			<view class="playlist-container">
-				<block wx:for="{{newAlbum}}" wx:for-index="idx" wx:for-item="itemName">
-					<s-playlist playlist="{{itemName}}" class="playlist_item" singer="{{true}}" fwBold="{{true}}"></s-playlist>
 				</block>
 			</view>
 		</s-card>

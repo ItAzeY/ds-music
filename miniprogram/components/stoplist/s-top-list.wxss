@@ -1,0 +1,30 @@
+/* components/toplist/s-top-list.wxss */
+.top_container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.top_container image {
+  flex-basis: 90px;
+  min-width: 90px;
+  height: 90px;
+}
+
+.top_container .top_wapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top_container .top_info {
+  width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 2;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}

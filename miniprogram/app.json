@@ -10,6 +10,7 @@
     "s-list": "./components/slist/list",
     "s-playlist": "/components/playlist/playlist",
     "s-mv-list": "./components/smvlist/s-mv-list",
+    "s-top-list": "./components/stoplist/s-top-list",
     "van-skeleton": "@vant/weapp/skeleton"
   },
   "window": {
