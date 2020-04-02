@@ -1,0 +1,9 @@
+@import './style/iconfont/iconfont.wxss';
+view,text {
+  font-family: STKaiti;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

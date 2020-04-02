@@ -1,0 +1,26 @@
+function format(val) {
+  if(typeof val === 'number') {
+    val+=''
+  }
+  if(typeof val !== 'string') return
+  if(val.length <= 4) return val
+  var tail = val.slice(-4).slice(0,1)
+  var head = val.slice(0,val.length-4)
+  var newVal = head+'.'+tail+ '万'
+  return newVal
+}
+function singers(arr) {
+  if(typeof arr !== 'object') return
+  if(!arr.length) return
+  if(arr.length === 1) return arr[0].name
+  var names = '';
+  for (var i = 0; i < arr.length; i++) {
+    names += arr[i].name + ' / '
+  }
+  return names.substring(0, names.length - 3)
+}
+
+module.exports = {
+  formatCount: format,
+  singers: singers
+}

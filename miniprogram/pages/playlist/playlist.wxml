@@ -1,0 +1,55 @@
+<view class="playlist">
+	<van-skeleton title row="3" loading="{{loading}}">
+		<view class="flx"></view>
+		<view class="qq_search">
+			<icon class="qq_search_icon"></icon><text class="qq_search_text icon icon-search">搜索</text>
+		</view>
+	</van-skeleton>
+
+	<van-skeleton title row="16" loading="{{loading}}">
+		<s-card title="热门推荐" rightBtn="true">
+			<block wx:for="{{songlist}}">
+				<s-list item="{{item}}" index="{{index}}" class="song_list"></s-list>
+			</block>
+		</s-card>
+	</van-skeleton>
+
+	<van-skeleton title row="3" loading="{{loading}}">
+		<swiper indicator-dots="true" autoplay="true" circular="true" class="swiper">
+			<block wx:for="{{swiperImgUrls}}" wx:for-index="idx" wx:for-item="itemName">
+				<swiper-item>
+					<image src="{{itemName.pic_info.url}}"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+	</van-skeleton>
+
+	<van-skeleton title row="16" loading="{{new_loading}}">
+		<s-card title="新歌首发" rightBtn="true">
+			<block wx:for="{{newSong}}">
+				<s-list item="{{item}}" index="{{index}}" class="song_list"></s-list>
+			</block>
+		</s-card>
+	</van-skeleton>
+
+	<van-skeleton title row="3" loading="{{loading}}">
+		<s-card title="热门歌单" rightBtn="true">
+			<view class="playlist-container">
+				<block wx:for="{{playlist}}" wx:for-index="idx" wx:for-item="itemName">
+					<s-playlist playlist="{{itemName}}" class="playlist_item"></s-playlist>
+				</block>
+			</view>
+		</s-card>
+	</van-skeleton>
+
+	<van-skeleton title row="16" loading="{{new_loading}}">
+		<s-card title="新碟首发" rightBtn="true">
+			<view class="playlist-container">
+				<block wx:for="{{newAlbum}}" wx:for-index="idx" wx:for-item="itemName">
+					<s-playlist playlist="{{itemName}}" class="playlist_item" singer="{{true}}" fwBold="{{true}}"></s-playlist>
+				</block>
+			</view>
+		</s-card>
+	</van-skeleton>
+
+</view>

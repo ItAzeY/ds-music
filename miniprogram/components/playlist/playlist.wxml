@@ -1,0 +1,7 @@
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="playlist_wapper">
+	<image src="{{playlist.cover}}" mode="widthFix"></image>
+	<view class="playlist_title {{fwBold ? 'fw_bold' : ''}}">{{playlist.title}}</view>
+	<view class="playlist_singer" wx:if="{{singer}}">{{common.singers(playlist.singers)}}</view>
+	<view class="listen_num {{fwBold ? '' : 'icon icon-bofang'}}">{{common.formatCount(playlist.listen_num)}}</view>
+</view>

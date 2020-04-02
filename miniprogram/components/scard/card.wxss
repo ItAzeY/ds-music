@@ -1,0 +1,22 @@
+/* components/scard/scard.wxss */
+.s_card{
+  padding: 10px;
+}
+.s_card_hader{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+}
+.s_card_hader_title{
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+.s_card_hader_btn{
+  display: flex;
+  align-items: center;
+  color: #454545;
+  font-size: 14px;
+}

@@ -1,0 +1,13 @@
+<!--components/slist/list.wxml-->
+<view class="s_list_wapper">
+  <image src="{{item.url}}"></image>
+  <view class="s_list_info">
+    <view class="s_list_info_name">
+      <view>
+        {{item.name}}
+      </view>
+    </view>
+    <view class="s_list_info_author">{{item.singer[0].name}} · {{item.album.name}} </view>
+    <view class="right icon icon-RightArrow"></view>
+  </view>
+</view>

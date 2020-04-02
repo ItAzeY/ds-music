@@ -1,0 +1,7 @@
+<view class="s_card">
+	<view class="s_card_hader">
+		<view class="s_card_hader_title">{{title}}</view>
+		<view wx:if="{{rightBtn}}" class="s_card_hader_btn">更多</view>
+	</view>
+	<slot></slot>
+</view>

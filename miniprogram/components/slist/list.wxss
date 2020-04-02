@@ -1,0 +1,37 @@
+/* components/slist/list.wxss */
+@import '../../style/iconfont/iconfont.wxss';
+.s_list_wapper {
+  display: flex;
+  height: 80px;
+  padding-bottom: 20rpx;
+  align-items: center;
+}
+
+image {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+.s_list_info{
+  position: relative;
+  flex: 1;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+.s_list_info_name{
+  position: absolute;
+  bottom: 8rpx;
+  color: #000;
+  font-size: 30rpx;
+}
+.right{
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+.s_list_info_author{
+  position: absolute;
+  top: 10rpx;
+  font-size: 28rpx;
+  color: #999;
+}
