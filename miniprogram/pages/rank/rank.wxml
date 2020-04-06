@@ -1,0 +1,5 @@
+<view>
+  <view>
+    <view wx:for="{{songlist}}" bindtap="hanldeClick" data-song="{{item}}">{{index}} - {{item.name}} - {{item.singer}}·{{item.album}}</view>
+  </view>
+</view>

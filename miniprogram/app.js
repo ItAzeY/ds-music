@@ -1,5 +1,9 @@
 //app.js
 App({
+  globalData: {
+    rankinfo: {},
+    song: null
+  },
   onLaunch: function () {
     
     if (!wx.cloud) {

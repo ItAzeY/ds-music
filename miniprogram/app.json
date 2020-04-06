@@ -3,6 +3,7 @@
     "pages/playlist/playlist",
     "pages/blog/blog",
     "pages/profile/profile",
+    "pages/rank/rank",
     "pages/player/player"
   ],
   "usingComponents": {

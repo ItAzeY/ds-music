@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    app: getApp()
   },
 
   /**
@@ -20,8 +20,10 @@ Component({
   methods: {
     bindViewPlayer(e){
       let info = e.currentTarget.dataset.item
+      var app = getApp()
+      app.globalData.rankinfo = info
       wx.navigateTo({
-        url: `../../pages/player/player?topId=${info.topId}`,
+        url: `../../pages/rank/rank?topId=${info.topId}`,
       })
     }
   }
