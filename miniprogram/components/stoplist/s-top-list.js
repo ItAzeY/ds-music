@@ -18,6 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    bindViewPlayer(e){
+      let info = e.currentTarget.dataset.item
+      wx.navigateTo({
+        url: `../../pages/player/player?topId=${info.topId}`,
+      })
+    }
   }
 })

@@ -1,7 +1,7 @@
 <!--components/toplist/s-top-list.wxml-->
-<view class="top_container">
+<view class="top_container" bindtap="bindViewPlayer" data-item="{{item}}">
   <image src="{{item.frontPicUrl}}"></image>
   <view class="top_wapper">
-    <view wx:for="{{item.song}}" class="top_info">{{index + 1}}. {{item.title}} - {{item.singerName}}</view>
+    <view wx:for="{{item.song}}" class="top_info" wx:key="songId">{{index + 1}}. {{item.title}} - {{item.singerName}}</view>
   </view>
 </view>

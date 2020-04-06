@@ -30,7 +30,6 @@ Page({
         'cookie': cookie
       },
       success: function(res) {
-        console.log(res)
         if(res.statusCode == 200) {
           var newSong = res.data.new_song.data.songlist.slice(0,5)
           newSong.forEach(item => {
@@ -130,6 +129,5 @@ Page({
 
   },
   onChange(event) {
-    console.log(event.detail);
   }
 })

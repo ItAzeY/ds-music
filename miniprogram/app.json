@@ -2,7 +2,8 @@
   "pages": [
     "pages/playlist/playlist",
     "pages/blog/blog",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/player/player"
   ],
   "usingComponents": {
     "van-field": "@vant/weapp/field",
