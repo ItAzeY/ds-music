@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-image {
+.s_list_wapper image {
   width: 60px;
   height: 60px;
   border-radius: 5px;

@@ -6,13 +6,14 @@ Page({
    */
   data: {
     songlist: [],
-    isOk: false
+    songinfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this._init()
     var topId = options.topId
     var app = getApp()
     var _this = this
@@ -238,12 +239,22 @@ Page({
 
   },
 
-  hanldeClick(e){
+  hanldeClick(e){ // 点击进入播放页面
     var song = e.currentTarget.dataset.song
     var app = getApp()
     app.globalData.song = song
     wx.navigateTo({
       url: `../../pages/player/player`,
+    })
+  },
+  _init(){ // 初始化函数
+    var app = getApp()
+    var info = app.globalData.rankinfo
+    wx.setNavigationBarTitle({
+      title: info.title
+    })
+    this.setData({
+      songinfo: info
     })
   }
 })

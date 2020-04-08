@@ -1,6 +1,5 @@
 /* pages/player/player.wxss */
 .rank {
-  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -10,10 +9,16 @@
   overflow: hidden;
   padding-bottom: 20rpx;
 }
-.rank .rank_item_index{
+
+.rank .rank_wapper {
+  padding: 20rpx;
+}
+
+.rank .rank_item_index {
   padding-right: 20rpx;
   font-size: 36rpx;
 }
+
 .rank .rank_info_singer {
   overflow: hidden;
   text-overflow: ellipsis;

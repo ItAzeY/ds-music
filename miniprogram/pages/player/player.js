@@ -18,7 +18,9 @@ Page({
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true
     innerAudioContext.src = song.url
-    innerAudioContext.onPlay()
+    innerAudioContext.onPlay(() => {
+      console.log('onPlay')
+    })
   },
 
   /**
