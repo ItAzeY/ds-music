@@ -1,5 +1,5 @@
 <!--components/slist/list.wxml-->
-<view class="s_list_wapper">
+<view class="s_list_wapper" bindtap="hanldeClick" data-song="{{item}}">
   <image src="{{item.image}}"></image>
   <view class="s_list_info">
     <view class="s_list_info_name">
