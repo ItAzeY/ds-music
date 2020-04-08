@@ -32,6 +32,7 @@ Page({
       },
       success: function(res) {
         if(res.statusCode == 200) {
+          var toplist = res.data.toplist.data.group[0].toplist
           var newSong = res.data.new_song.data.songlist.slice(0,5)
           newSong.forEach(item => {
             item.image = `https://y.gtimg.cn/music/photo_new/T002R150x150M000${item.album.mid}.jpg?max_age=2592000`
@@ -41,7 +42,7 @@ Page({
           _this.setData({
             swiperImgUrls: res.data.focus.data.content,
             playlist: res.data.recomPlaylist.data.v_hot,
-            toplist: res.data.toplist.data.group[0].toplist,
+            toplist: toplist.splice(0, toplist.length - 1),
             newSong: newSong,
             new_loading: false
           })

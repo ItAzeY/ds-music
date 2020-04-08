@@ -134,7 +134,6 @@ Page({
       method: 'get',
       data: data,
       success: function (res) {
-        console.log(res.data.songlist)
         _this.setData({
           songlist: _normalizeSongs(res.data.songlist)
         })
