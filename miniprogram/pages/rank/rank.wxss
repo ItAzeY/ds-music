@@ -1,1 +1,31 @@
 /* pages/player/player.wxss */
+.rank {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.rank .rank_item {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 20rpx;
+}
+.rank .rank_item_index{
+  padding-right: 20rpx;
+  font-size: 36rpx;
+}
+.rank .rank_info_singer {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  color: #999;
+  padding-bottom: 5rpx;
+}
+
+.rank .rank_info_name {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 2;
+}

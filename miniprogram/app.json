@@ -22,29 +22,5 @@
     "navigationBarTitleText": "大圣音乐",
     "navigationBarTextStyle": "white"
   },
-  "tabBar": {
-    "color": "#474747",
-    "selectedColor": "#d81e06",
-    "list": [
-      {
-        "pagePath": "pages/playlist/playlist",
-        "text": "音乐",
-        "iconPath": "images/yinyue1.png",
-        "selectedIconPath": "images/yinyue2.png"
-      },
-      {
-        "pagePath": "pages/blog/blog",
-        "text": "发现",
-        "iconPath": "images/faxian1.png",
-        "selectedIconPath": "images/faxian2.png"
-      },
-      {
-        "pagePath": "pages/profile/profile",
-        "text": "我的",
-        "iconPath": "images/wode1.png",
-        "selectedIconPath": "images/wode2.png"
-      }
-    ]
-  },
   "sitemapLocation": "sitemap.json"
 }

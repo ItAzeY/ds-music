@@ -52,9 +52,15 @@ Page({
         album,
         duration,
         image,
-        url
+        url,
+        rate,
+        msgid,
+        isonly,
       }) {
         this.id = id
+        this.rate = rate
+        this.msgid = msgid
+        this.isonly = isonly
         this.mid = mid
         this.singer = singer
         this.name = name
@@ -72,7 +78,6 @@ Page({
         return new Promise((resolve, reject) => {
           getLyric(this.mid).then((res) => {
             if (res.retcode === ERR_OK) {
-              debugger
               this.lyric = Base64.decode(res.lyric)
               resolve(this.lyric)
             } else {
@@ -84,6 +89,9 @@ Page({
     }
     var createSong = function (musicData) {
       return new Song({
+        isonly: musicData.isonly,
+        msgid: musicData.msgid,
+        rate: musicData.rate,
         id: musicData.songid,
         mid: musicData.songmid,
         singer: filterSinger(musicData.singer),
@@ -126,6 +134,7 @@ Page({
       method: 'get',
       data: data,
       success: function (res) {
+        console.log(res.data.songlist)
         _this.setData({
           songlist: _normalizeSongs(res.data.songlist)
         })

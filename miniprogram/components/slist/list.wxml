@@ -1,13 +1,18 @@
 <!--components/slist/list.wxml-->
 <view class="s_list_wapper">
-  <image src="{{item.url}}"></image>
+  <image src="{{item.image}}"></image>
   <view class="s_list_info">
     <view class="s_list_info_name">
       <view>
-        {{item.name}}
+        {{item.name}} 
       </view>
     </view>
-    <view class="s_list_info_author">{{item.singer[0].name}} · {{item.album.name}} </view>
-    <view class="right icon icon-RightArrow"></view>
+    <view class="s_list_info_author">
+      <view class="icon icon-hq" wx:if="{{item.rate===7}}"></view>
+      <view class="icon icon-sq" wx:if="{{item.rate===23}}"></view>
+      <view class="icon icon-dujia" wx:if="{{item.isonly === 1}}"></view>
+      <text class="s_list_info_content">{{item.singer}} · {{item.album}}</text>
+    </view>
+    <view class="right icon icon-RightArrow" wx:if="{{righticon}}"></view>
   </view>
 </view>

@@ -1,10 +1,12 @@
 /* components/slist/list.wxss */
 @import '../../style/iconfont/iconfont.wxss';
+
 .s_list_wapper {
   display: flex;
   height: 80px;
   padding-bottom: 20rpx;
   align-items: center;
+  overflow: hidden;
 }
 
 image {
@@ -12,26 +14,61 @@ image {
   height: 60px;
   border-radius: 5px;
 }
-.s_list_info{
+
+.s_list_info {
   position: relative;
   flex: 1;
   box-sizing: border-box;
   padding-left: 20rpx;
 }
-.s_list_info_name{
+
+.s_list_info_name {
   position: absolute;
   bottom: 8rpx;
   color: #000;
   font-size: 30rpx;
 }
-.right{
+
+.right {
   position: absolute;
   top: -10px;
   right: 10px;
 }
-.s_list_info_author{
+
+.s_list_info_author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   position: absolute;
   top: 10rpx;
   font-size: 28rpx;
   color: #999;
+  height: 40rpx;
+}
+
+/* .s_list_info_author text{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+} */
+.s_list_info_author .icon {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-size: 40rpx;
+  color: #31c27c;
+  line-height: 1;
+}
+
+.s_list_info_author .icon-sq {
+  color: #ED9F3F;
+}
+
+.s_list_info_content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -1,3 +1,4 @@
+import {formatTimeSecond}  from '../../utils/common'
 Page({
 
   /**
@@ -14,18 +15,10 @@ Page({
     var app = getApp()
     var song = app.globalData.song
     console.log(song)
-    // wx.request({
-    //   url: song.url,
-    //   success:function(res) {
-    //     console.log(res)
-    //   }
-    // })
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true
     innerAudioContext.src = song.url
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放')
-    })
+    innerAudioContext.onPlay()
   },
 
   /**

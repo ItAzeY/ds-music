@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "236694",
+      "name": "独家",
+      "font_class": "dujia",
+      "unicode": "e763",
+      "unicode_decimal": 59235
+    },
+    {
+      "icon_id": "159485",
+      "name": "HQ",
+      "font_class": "hq1",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "236418",
+      "name": "SQ",
+      "font_class": "sq",
+      "unicode": "e75f",
+      "unicode_decimal": 59231
+    },
+    {
+      "icon_id": "745170",
+      "name": "vip",
+      "font_class": "vip",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
       "icon_id": "10353634",
       "name": "视频",
       "font_class": "shipin",

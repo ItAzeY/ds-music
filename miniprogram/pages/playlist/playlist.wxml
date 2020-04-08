@@ -27,7 +27,7 @@
 	<van-skeleton title row="16" loading="{{new_loading}}">
 		<s-card title="新歌首发" rightBtn="true">
 			<block wx:for="{{newSong}}" wx:key="id">
-				<s-list item="{{item}}" index="{{index}}" class="song_list"></s-list>
+				<s-list item="{{item}}" index="{{index}}" class="song_list" righticon="{{true}}" lefticon="{{false}}"></s-list>
 			</block>
 		</s-card>
 	</van-skeleton>

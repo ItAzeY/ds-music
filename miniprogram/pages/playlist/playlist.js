@@ -1,4 +1,5 @@
 // pages/playlist/playlist.js
+import { singers, albums } from '../../utils/common'
 Page({
 
   /**
@@ -33,7 +34,9 @@ Page({
         if(res.statusCode == 200) {
           var newSong = res.data.new_song.data.songlist.slice(0,5)
           newSong.forEach(item => {
-            item.url = `https://y.gtimg.cn/music/photo_new/T002R150x150M000${item.album.mid}.jpg?max_age=2592000`
+            item.image = `https://y.gtimg.cn/music/photo_new/T002R150x150M000${item.album.mid}.jpg?max_age=2592000`
+            item.singer = singers(item.singer)
+            item.album = item.album.subtitle
           })
           _this.setData({
             swiperImgUrls: res.data.focus.data.content,
