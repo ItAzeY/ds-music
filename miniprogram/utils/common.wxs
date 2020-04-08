@@ -19,8 +19,24 @@ function singers(arr) {
   }
   return names.substring(0, names.length - 3)
 }
-
+function formatTimeSecond(second){
+	if(typeof second !== 'number') return '00:00'
+	if(second === 0) return '00:00'
+	var time = Math.floor(second)
+	var remainder = time % 60
+	remainder = remainder >= 10 ? remainder : '0' + remainder
+	var result = Math.floor(time / 60)
+	result = result >= 10 ? result : '0' + result
+	var s = 0
+	if(result >= 1){
+		s =  result + ':' + remainder
+	} else {
+		s = 0 + ':' + remainder
+	}
+	return s
+}
 module.exports = {
   formatCount: format,
-  singers: singers
+  singers: singers,
+  formatTimeSecond:formatTimeSecond
 }

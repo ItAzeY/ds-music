@@ -1,2 +1,18 @@
 <!--pages/play/play.wxml-->
-<text>pages/play/play.wxml</text>
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="player">
+  <view class="player_bg">
+    <image src="{{songinfo.image}}" class="player_bg_image" mode="widthFix"></image>
+  </view>
+  <view class="player_control">
+    <view class="player_control_progres">
+        <view class="progres_before">{{common.formatTimeSecond(song.currentduration)}}</view>
+        <van-progress percentage="{{song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
+        <view class="progres_after">{{common.formatTimeSecond(song.duration)}}</view>
+    </view>
+    <view>
+      <view>播放</view>
+      <view>暂停</view>
+    </view>
+  </view>
+</view>
