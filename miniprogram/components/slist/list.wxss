@@ -47,13 +47,24 @@ image {
   height: 40rpx;
 }
 
-/* .s_list_info_author text{
-  height: 100%;
+.s_list_index {
+  padding-left: 0rpx;
+  padding-right: 20rpx;
+  width: 30px;
+  overflow: hidden;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #000;
   display: flex;
-  align-items: center;
   justify-content: center;
-  vertical-align: middle;
-} */
+  align-items: center;
+}
+
+.s_list_index .icon {
+  color: #ff4222;
+  font-size: 55rpx;
+}
+
 .s_list_info_author .icon {
   display: flex;
   height: 100%;

@@ -1,5 +1,9 @@
 <!--components/slist/list.wxml-->
 <view class="s_list_wapper" bindtap="hanldeClick" data-song="{{item}}">
+  <view wx:if="{{isIndex}}" class="s_list_index">
+    <text class="icon {{index === 0 ? 'icon-diyi':''}} {{index === 1 ? 'icon-dier':''}} {{index === 2 ? 'icon-disan':''}}"></text>
+    <text wx:if="{{index > 2}}">{{index + 1}}</text>
+  </view>
   <image src="{{item.image}}"></image>
   <view class="s_list_info">
     <view class="s_list_info_name">
@@ -8,9 +12,10 @@
       </view>
     </view>
     <view class="s_list_info_author">
-      <view class="icon icon-hq" wx:if="{{item.rate===7}}"></view>
-      <view class="icon icon-sq" wx:if="{{item.rate===23}}"></view>
+      <view class="icon icon-hq" wx:if="{{item.rate === 7}}"></view>
+      <view class="icon icon-sq" wx:if="{{item.rate === 23}}"></view>
       <view class="icon icon-dujia" wx:if="{{item.isonly === 1}}"></view>
+      <view class="icon icon-vip" wx:if="{{item.msgid === 13}}"></view>
       <text class="s_list_info_content">{{item.singer}} · {{item.album}}</text>
     </view>
     <view class="right icon icon-RightArrow" wx:if="{{righticon}}"></view>

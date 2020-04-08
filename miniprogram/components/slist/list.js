@@ -5,7 +5,12 @@ Component({
    */
   properties: {
     item: Object,
-    righticon: Boolean
+    righticon: Boolean,
+    index: Number,
+    isIndex: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**

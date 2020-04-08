@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5242708",
+      "name": "第一",
+      "font_class": "diyi",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    },
+    {
+      "icon_id": "5242709",
+      "name": "第二",
+      "font_class": "dier",
+      "unicode": "e6ed",
+      "unicode_decimal": 59117
+    },
+    {
+      "icon_id": "5242710",
+      "name": "第三",
+      "font_class": "disan",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
       "icon_id": "236694",
       "name": "独家",
       "font_class": "dujia",
@@ -15,7 +36,7 @@
     {
       "icon_id": "159485",
       "name": "HQ",
-      "font_class": "hq1",
+      "font_class": "hq",
       "unicode": "e684",
       "unicode_decimal": 59012
     },

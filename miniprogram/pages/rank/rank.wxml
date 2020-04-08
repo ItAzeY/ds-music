@@ -1,7 +1,7 @@
 <view class="rank">
   <view class="rank_wapper">
     <view wx:for="{{songlist}}" wx:key="id" bindtap="hanldeClick" data-song="{{item}}">
-      <s-list item="{{item}}" index="{{index}}" class="song_list" righticon="{{false}}" lefticon="{{true}}"></s-list>
+      <s-list item="{{item}}" isIndex="{{true}}" index="{{index}}" class="song_list" righticon="{{false}}" lefticon="{{true}}"></s-list>
     </view>
   </view>
 </view>
