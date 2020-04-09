@@ -2,7 +2,8 @@
 App({
   globalData: {
     rankinfo: {},
-    song: null
+    song: null,
+    songPlayer: null
   },
   onLaunch: function () {
     

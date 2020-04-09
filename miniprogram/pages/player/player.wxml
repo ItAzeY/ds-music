@@ -10,9 +10,12 @@
         <van-progress percentage="{{song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
         <view class="progres_after">{{common.formatTimeSecond(song.duration)}}</view>
     </view>
-    <view>
-      <view>播放</view>
-      <view>暂停</view>
+    <view class="player_control_wapper">
+      <view class="icon icon-suiji"></view>
+      <view class="icon icon-prev"></view>
+      <view class="icon {{song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="handleClickPlayToggle"></view>
+      <view class="icon icon-next"></view>
+      <view class="icon icon-playlist"></view>
     </view>
   </view>
 </view>

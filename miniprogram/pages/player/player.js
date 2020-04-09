@@ -1,3 +1,4 @@
+import { setBarTitle,setData } from '../../utils/common'
 Page({
 
   /**
@@ -21,8 +22,10 @@ Page({
       duration: 0,
       name: '',
       currentduration: 0,
-      progres: 0
-    }
+      progres: 0,
+      isPlay: false
+    },
+    audioContext: null
   },
 
   /**
@@ -31,9 +34,10 @@ Page({
   onLoad: function (options) {
     var app = getApp()
     var song = app.globalData.song
+    app.globalData.songPlayer = wx.createInnerAudioContext()
+    var audioContext = app.globalData.songPlayer
+    audioContext.src = "http://aqqmusic.tc.qq.com/amobile.music.tc.qq.com/C400000lv3Zi13dSVA.m4a?guid=2012669392&vkey=CFF75E9E6AB9398FE6C5612A3F20D49D83C8CF43C568CA1DB8CF3FD78FCDF360AC47ECA384EC2331A49A32F09358C9C5CC62C67E1D9146E2&uin=0&fromtag=38"
     console.log(song)
-    const innerAudioContext = wx.createInnerAudioContext()
-    innerAudioContext.autoplay = true
     var _this = this
     this.setData({
       song: {
@@ -41,26 +45,39 @@ Page({
         name: _this.data.songinfo.name
       }
     })
-    wx.setNavigationBarTitle({
-      title: _this.data.song.name
+    console.log(this,'this1')
+    audioContext.onCanplay(() => {
+      console.log(this,'this2')
+      setData(this, 'song','isPlay', true)
+      audioContext.play()
     })
-    innerAudioContext.src = "http://aqqmusic.tc.qq.com/amobile.music.tc.qq.com/C400000lv3Zi13dSVA.m4a?guid=2012669392&vkey=CFF75E9E6AB9398FE6C5612A3F20D49D83C8CF43C568CA1DB8CF3FD78FCDF360AC47ECA384EC2331A49A32F09358C9C5CC62C67E1D9146E2&uin=0&fromtag=38"
+    setBarTitle(_this.data.song.name)
     // innerAudioContext.src = song.url
     var currentTime = 'song.currentduration'
     var currentprogres = 'song.progres'
-    innerAudioContext.onPlay(() => {
+    audioContext.onPlay(() => {
       console.log('play')
     })
-    innerAudioContext.onTimeUpdate(() => {
-      var progres = (innerAudioContext.currentTime / innerAudioContext.duration) * 100
-      console.log(innerAudioContext.currentTime,innerAudioContext.duration )
+    audioContext.onTimeUpdate(() => {
+      var progres = (audioContext.currentTime / audioContext.duration) * 100
       _this.setData({
-        [currentTime]: innerAudioContext.currentTime,
+        [currentTime]: audioContext.currentTime,
         [currentprogres]: progres
       })
     })
   },
 
+  handleClickPlayToggle() { // 切换播放和暂停
+    var app = getApp()
+    var audioContext = app.globalData.songPlayer
+    if(audioContext.paused) {
+      audioContext.play()
+      setData(this,'song','isPlay', true)
+    } else {
+      audioContext.pause()
+      setData(this,'song','isPlay', false)
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

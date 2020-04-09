@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6819188",
+      "name": "随机",
+      "font_class": "suiji",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "11029876",
+      "name": "播放列表",
+      "font_class": "playlist",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "9898180",
+      "name": "上一首",
+      "font_class": "prev",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "11141845",
+      "name": "上一首",
+      "font_class": "next",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "662652",
+      "name": "播放",
+      "font_class": "pause",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "1072257",
+      "name": "播放",
+      "font_class": "play",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
       "icon_id": "5242708",
       "name": "第一",
       "font_class": "diyi",
