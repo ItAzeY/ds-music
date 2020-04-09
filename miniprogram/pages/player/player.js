@@ -1,81 +1,65 @@
 import { setBarTitle,setData } from '../../utils/common'
+var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    songinfo: {
-      album: "麻雀",
-      duration: 252,
-      filename: "C400000lv3Zi13dSVA.m4a",
-      id: 246492240,
-      image: "https://y.gtimg.cn/music/photo_new/T002R300x300M000003eE8gA3TfuKc.jpg?max_age=2592000",
-      isonly: 0,
-      mid: "000lv3Zi13dSVA",
-      msgid: 14,
-      name: "麻雀",
-      rate: 23,
-      singer: "李荣浩"
-    },
-    song: {
-      duration: 0,
-      name: '',
-      currentduration: 0,
-      progres: 0,
-      isPlay: false
-    },
-    audioContext: null
+    songinfo: {},
+    audioContext: null,
+    _song: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+   onLoad: function(options) {
     var app = getApp()
-    var song = app.globalData.song
-    app.globalData.songPlayer = wx.createInnerAudioContext()
-    var audioContext = app.globalData.songPlayer
-    audioContext.src = "http://aqqmusic.tc.qq.com/amobile.music.tc.qq.com/C400000lv3Zi13dSVA.m4a?guid=2012669392&vkey=CFF75E9E6AB9398FE6C5612A3F20D49D83C8CF43C568CA1DB8CF3FD78FCDF360AC47ECA384EC2331A49A32F09358C9C5CC62C67E1D9146E2&uin=0&fromtag=38"
-    console.log(song)
-    var _this = this
+    setData(this, 'songinfo', app.globalData.songinfo)
     this.setData({
-      song: {
-        duration: _this.data.songinfo.duration,
-        name: _this.data.songinfo.name
+      _song: {
+        name: app.globalData.songinfo.name,
+        image: app.globalData.songinfo.image,
+        url: app.globalData.songinfo.url,
+        singer: app.globalData.songinfo.singer,
+        album: app.globalData.songinfo.album,
+        duration: app.globalData.songinfo.duration,
+        currentTime: 0,
+        startTime: 0,
+        autoplay: false,
+        isPlay: false,
+        loop: false,
+        paused: true,
+        progres: 0,
       }
     })
-    console.log(this,'this1')
+    setBarTitle(this.data.songinfo.name)
+    this.play(this.data.songinfo)
+  },
+  play(song) {
+    app.globalData.audioContext = wx.createInnerAudioContext()
+    var audioContext = app.globalData.audioContext
+    audioContext.src = song.url
     audioContext.onCanplay(() => {
-      console.log(this,'this2')
-      setData(this, 'song','isPlay', true)
       audioContext.play()
     })
-    setBarTitle(_this.data.song.name)
-    // innerAudioContext.src = song.url
-    var currentTime = 'song.currentduration'
-    var currentprogres = 'song.progres'
     audioContext.onPlay(() => {
-      console.log('play')
+      setData(this, '_song.isPlay', true)
     })
     audioContext.onTimeUpdate(() => {
       var progres = (audioContext.currentTime / audioContext.duration) * 100
-      _this.setData({
-        [currentTime]: audioContext.currentTime,
-        [currentprogres]: progres
-      })
+      setData(this, '_song.currentTime',audioContext.currentTime)
+      setData(this, '_song.progres',progres)
     })
   },
-
   handleClickPlayToggle() { // 切换播放和暂停
-    var app = getApp()
-    var audioContext = app.globalData.songPlayer
+    var audioContext = app.globalData.audioContext
     if(audioContext.paused) {
       audioContext.play()
-      setData(this,'song','isPlay', true)
+      setData(this,'_song.isPlay', true)
     } else {
       audioContext.pause()
-      setData(this,'song','isPlay', false)
+      setData(this,'_song.isPlay', false)
     }
   },
   /**

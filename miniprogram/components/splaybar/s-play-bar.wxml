@@ -1,0 +1,13 @@
+<!--components/splaybar/splaybar.wxml-->
+<view class="containBox">
+    <view class="mainBox">
+        <view class="left">
+            <image src="{{songinfo.image}}" class="{{isPlay ? 'animate' : ''}}"></image>{{song.name}}
+        </view>
+        <view class="right">
+            <image src="{{continueBtnImg}}" catchtap="pause"/>
+            <image src="{{playBtnImg}}" catchtap="play"/>
+            <image src="{{listIcon}}" catchtap="showList"/>
+        </view>
+    </view>
+</view>

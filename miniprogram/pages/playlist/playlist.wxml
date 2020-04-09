@@ -49,5 +49,5 @@
 			</block>
 		</s-card>
 	</van-skeleton>
-
+	<s-play-bar songinfo="{{song}}" isPlay="{{true}}" wx:if="{{songinfo}}" class="playbar"/>
 </view>

@@ -1,0 +1,56 @@
+/* components/splaybar/splaybar.wxss */
+.containBox{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FAFAFA;
+    z-index: 999;
+}
+
+.mainBox{
+    width: 100%;
+}
+
+.mainBox .left{
+    height: 100%;
+    line-height: 100rpx;
+    float: left;
+    font-size: 28rpx;
+}
+.mainBox .left image{
+    vertical-align: middle;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+    margin-left: 10rpx;
+}
+
+.mainBox .left image.animate{
+    animation: myAnimate 6s linear infinite;
+}
+
+.mainBox .right {
+    width: 200rpx;
+    height: 100%;
+    line-height: 100rpx;
+    float: right;
+    font-size: 28rpx;
+}
+
+.mainBox .right image {
+    vertical-align: middle;
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+}
+
+@keyframes myAnimate{
+    from {
+        transform: rotateZ(0);
+    }
+    to{
+        transform: rotateZ(-360deg);
+    }
+}

@@ -242,7 +242,7 @@ Page({
   hanldeClick(e){ // 点击进入播放页面
     var song = e.currentTarget.dataset.song
     var app = getApp()
-    app.globalData.song = song
+    app.globalData.songinfo = song
     wx.navigateTo({
       url: `../../pages/player/player`,
     })

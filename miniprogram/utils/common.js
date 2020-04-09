@@ -15,9 +15,21 @@ export function setBarTitle(title) {
   })
 }
 
-export const setData = (_this, obj, attr, value) => {
-  var key = `${obj}.${attr}`
-  _this.setData({
-    [key]: value
-  })
+export const setData = (_this, attr, value) => {
+  var key = ''
+  if(typeof attr === 'string'){
+    _this.setData({
+      [attr]: value
+    })
+  }else if(typeof attr === 'object' && attr.length){
+    attr.forEach(item => {
+      key= key + item + '.'
+    })
+    key = key.substring(0,key.length-1)
+    _this.setData({
+      [key]: value
+    })
+  }else {
+    return false
+  }
 }

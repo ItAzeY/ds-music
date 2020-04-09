@@ -2,18 +2,18 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="player">
   <view class="player_bg">
-    <image src="{{songinfo.image}}" class="player_bg_image" mode="widthFix"></image>
+    <image src="{{_song.image}}" class="player_bg_image" mode="widthFix"></image>
   </view>
   <view class="player_control">
     <view class="player_control_progres">
-        <view class="progres_before">{{common.formatTimeSecond(song.currentduration)}}</view>
-        <van-progress percentage="{{song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
-        <view class="progres_after">{{common.formatTimeSecond(song.duration)}}</view>
+        <view class="progres_before">{{common.formatTimeSecond(_song.currentTime)}}</view>
+        <van-progress percentage="{{_song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
+        <view class="progres_after">{{common.formatTimeSecond(_song.duration)}}</view>
     </view>
     <view class="player_control_wapper">
       <view class="icon icon-suiji"></view>
       <view class="icon icon-prev"></view>
-      <view class="icon {{song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="handleClickPlayToggle"></view>
+      <view class="icon {{_song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="handleClickPlayToggle"></view>
       <view class="icon icon-next"></view>
       <view class="icon icon-playlist"></view>
     </view>

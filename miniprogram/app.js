@@ -1,12 +1,12 @@
 //app.js
+import { setData } from './utils/common'
 App({
   globalData: {
-    rankinfo: {},
-    song: null,
-    songPlayer: null
+    rankinfo: null,
+    songinfo: null,
+    audioContext: null
   },
   onLaunch: function () {
-    
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -19,7 +19,13 @@ App({
         traceUser: true,
       })
     }
-
     this.globalData = {}
+  },
+  play() {
+    this.globalData.audioContext.play()
+  },
+  pause() {
+    this.globalData.audioContext.pause()
   }
 })
+ 

@@ -12,6 +12,7 @@
     "s-playlist": "/components/playlist/playlist",
     "s-mv-list": "./components/smvlist/s-mv-list",
     "s-top-list": "./components/stoplist/s-top-list",
+    "s-play-bar": "./components/splaybar/s-play-bar",
     "van-field": "@vant/weapp/field",
     "van-skeleton": "@vant/weapp/skeleton",
     "van-progress": "@vant/weapp/progress"

@@ -1,5 +1,6 @@
 // pages/playlist/playlist.js
-import { singers, albums } from '../../utils/common'
+import { singers, albums, setData } from '../../utils/common'
+var app = getApp()
 Page({
 
   /**
@@ -14,7 +15,9 @@ Page({
     newSong: [],
     toplist: [],
     mvlist:[],
-    leaderboard: []
+    leaderboard: [],
+    songinfo: null,
+    isPlay: false
   },
 
   /**
@@ -95,7 +98,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var audioContext = app.globalData.audioContext
+    setData(this, 'songinfo', app.globalData.songinfo)
   },
 
   /**
@@ -133,5 +137,6 @@ Page({
 
   },
   onChange(event) {
+
   }
 })
