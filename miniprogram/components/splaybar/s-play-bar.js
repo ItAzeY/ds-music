@@ -4,13 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    songinfo: {
+    _song: {
       type: Object,
       value: {}
-    },
-    isPlay: {
-      type: Boolean,
-      value: true
     }
   },
 
@@ -31,18 +27,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 继续播放音乐
-    play () {
-      console.log('开始播放')
-      app.play()
+    playToggleChange() {
+      console.log('123')
+      app.playToggleChange()
     },
-
-    // 暂停音乐
-    pause () {
-      console.log('暂停播放')
-      app.pause()
-    },
-
     // 显示播放列表
     showList () {
       console.log('显示列表')

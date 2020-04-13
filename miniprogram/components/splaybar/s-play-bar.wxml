@@ -2,12 +2,10 @@
 <view class="containBox">
     <view class="mainBox">
         <view class="left">
-            <image src="{{songinfo.image}}" class="{{isPlay ? 'animate' : ''}}"></image>{{song.name}}
+            <image src="{{_song.image}}" class="{{_song.isPlay ? 'animate' : ''}}"></image>{{_song.name}}
         </view>
         <view class="right">
-            <image src="{{continueBtnImg}}" catchtap="pause"/>
-            <image src="{{playBtnImg}}" catchtap="play"/>
-            <image src="{{listIcon}}" catchtap="showList"/>
+            <view class="icon {{_song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="playToggleChange"></view>
         </view>
     </view>
 </view>

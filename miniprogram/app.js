@@ -4,7 +4,8 @@ App({
   globalData: {
     rankinfo: null,
     songinfo: null,
-    audioContext: null
+    audioContext: null,
+    _song: null
   },
   onLaunch: function () {
     if (!wx.cloud) {
@@ -20,6 +21,18 @@ App({
       })
     }
     this.globalData = {}
+  },
+  playToggleChange() {
+    var audioContext = this.globalData.audioContext
+    var _song = this.globalData._song
+    if(audioContext.paused) {
+      audioContext.play()
+      _song.isPlay = true
+    } else {
+      audioContext.pause()
+      _song.isPlay = false
+    }
+    console.log(this.globalData._song)
   },
   play() {
     this.globalData.audioContext.play()

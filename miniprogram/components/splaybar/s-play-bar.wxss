@@ -1,4 +1,5 @@
 /* components/splaybar/splaybar.wxss */
+@import '../../style/iconfont/iconfont.wxss';
 .containBox{
     position: fixed;
     bottom: 0;

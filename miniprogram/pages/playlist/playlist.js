@@ -16,8 +16,7 @@ Page({
     toplist: [],
     mvlist:[],
     leaderboard: [],
-    songinfo: null,
-    isPlay: false
+    _song: null
   },
 
   /**
@@ -98,8 +97,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var audioContext = app.globalData.audioContext
-    setData(this, 'songinfo', app.globalData.songinfo)
+    // var audioContext = app.globalData.audioContext
+    setData(this, '_song', app.globalData._song)
   },
 
   /**
