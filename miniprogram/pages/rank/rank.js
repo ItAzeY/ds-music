@@ -1,4 +1,5 @@
 // pages/player/player.js
+var app = getApp()
 Page({
 
   /**
@@ -241,20 +242,25 @@ Page({
 
   hanldeClick(e){ // 点击进入播放页面
     var song = e.currentTarget.dataset.song
-    var app = getApp()
     app.globalData.songinfo = song
     wx.navigateTo({
       url: `../../pages/player/player`,
     })
   },
   _init(){ // 初始化函数
-    var app = getApp()
     var info = app.globalData.rankinfo
     wx.setNavigationBarTitle({
       title: info.title
     })
     this.setData({
       songinfo: info
+    })
+  },
+  hadleClickRandomAll() { // 随机播放全部
+    app.globalData._songlist = this.data.songlist
+    app.globalData.songinfo = this.data.songlist[0]
+    wx.navigateTo({
+      url: `../../pages/player/player`,
     })
   }
 })

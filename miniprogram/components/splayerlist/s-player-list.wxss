@@ -1,0 +1,24 @@
+/* components/playerlist/s-player-list.wxss */
+
+.player_list_opacity{
+  position: fixed;
+  height: 40vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+}
+.player_list_wapper{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: aliceblue;
+  color: #000;
+  height: 60vh;
+  width: 100%;
+  overflow: scroll;
+}
+.player_list_item{
+  display: flex;
+  padding: 5rpx;                                            
+}

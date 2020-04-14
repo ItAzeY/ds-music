@@ -2,6 +2,18 @@
 .rank {
   box-sizing: border-box;
 }
+.rank .random_all{
+  width: 96%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6DD5C9;
+  color: #333;
+  border-radius: 100px;
+  margin: 10px 2%;
+  box-sizing: border-box;
+}
 
 .rank .rank_item {
   display: flex;

@@ -1,7 +1,10 @@
 /* pages/play/play.wxss */
 @import '../../style/iconfont/iconfont.wxss';
 
-.player {}
+.player {
+  position: relative;
+  overflow: hidden;
+}
 
 .player .player_bg {
   width: 100%;
@@ -15,6 +18,9 @@
 .player_bg_image {
   width: 100%;
   border-radius: 50%;
+}
+.player_bg_image.around{
+  animation: around infinite 15s linear;
 }
 
 .player .player_control {
@@ -58,4 +64,21 @@
 }
 .player_control_wapper .icon-prev , .player_control_wapper .icon-next{
   font-weight: bold;
+}
+
+@keyframes around {
+  0%{transform: rotate(0);}
+  100%{transform: rotate(360deg);}
+}
+
+.player_list{
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }

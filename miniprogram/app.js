@@ -1,11 +1,14 @@
 //app.js
-import { setData } from './utils/common'
+import {
+  setData
+} from './utils/common'
 App({
   globalData: {
     rankinfo: null,
     songinfo: null,
     audioContext: null,
-    _song: null
+    _song: null,
+    _songlist: []
   },
   onLaunch: function () {
     if (!wx.cloud) {
@@ -22,10 +25,43 @@ App({
     }
     this.globalData = {}
   },
+  // 全局监听 _song
+  setWatching(key, method) {
+    let obj = this.globalData._song
+    // console.log('I am watching now '+key);
+    //加个前缀生成隐藏变量，防止死循环发生
+    let ori = obj[key]; //obj[key]这个不能放在Object.defineProperty里
+
+    if (ori) { //处理已经声明的变量，绑定处理
+      method(ori);
+    }
+    Object.defineProperty(obj, key, {
+      configurable: true,
+      enumerable: true,
+      set: function (value) {
+        this['_' + key] = value;
+        method(value); //数据有变化的时候回调函数，实现同步功能
+      },
+      get: function () {
+        // debugger
+        if (typeof this['__' + key] == 'undefined') {
+          if (ori) {
+            //这里读取数据的时候隐藏变量和 globalData设置不一样，所以要做同步处理
+            this['__' + key] = ori;
+            return ori;
+          } else {
+            return undefined;
+          }
+        } else {
+          return this['__' + key];
+        }
+      }
+    })
+  },
   playToggleChange() {
     var audioContext = this.globalData.audioContext
     var _song = this.globalData._song
-    if(audioContext.paused) {
+    if (audioContext.paused) {
       audioContext.play()
       _song.isPlay = true
     } else {
@@ -41,4 +77,3 @@ App({
     this.globalData.audioContext.pause()
   }
 })
- 

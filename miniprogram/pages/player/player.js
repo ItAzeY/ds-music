@@ -7,7 +7,8 @@ Page({
   data: {
     songinfo: {},
     audioContext: null,
-    _song: {}
+    _song: {},
+    openplayerlist: false
   },
 
   /**
@@ -109,5 +110,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  handleClickPlayList() { // 查看列表
+    setData(this, 'openplayerlist', true)
+    console.log(this.data.openplayerlist)
+  },
+  showPlayList(e) {
+    setData(this, 'openplayerlist', e.detail)
   }
 })
