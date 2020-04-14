@@ -2,10 +2,10 @@
 <view class="player_list" bindtap="handleClickShow">
   <view class="player_list_opacity"></view>
   <view class="player_list_wapper">
-    <view wx:for="{{_songlist}}" :key="id" class="player_list_item" catchtap="handleClickPlayer" data-song="{{item}}">
-      <text>{{item.name}}</text>
-      <text>{{item.album}}</text>
-      <icon type="cancel"></icon>
+    <view wx:for="{{_songlist}}" wx:key="name" class="player_list_item icon {{_song.name === item.name ? 'active icon-shengyin' : ''}}" catchtap="handleClickPlayer" data-song="{{item}}">
+      <text class="item_name">{{item.name}}</text>
+      <text class="item_singer"> · {{item.singer}}</text>
+      <text class="icon icon-cancel"></text>
     </view>
   </view>
 </view>

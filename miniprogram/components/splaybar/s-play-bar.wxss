@@ -52,6 +52,6 @@
         transform: rotateZ(0);
     }
     to{
-        transform: rotateZ(-360deg);
+        transform: rotateZ(360deg);
     }
 }

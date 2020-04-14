@@ -15,6 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
    onLoad: function(options) {
+    this._init()
+  },
+  _init(){
     var app = getApp()
     setData(this, 'songinfo', app.globalData.songinfo)
     this.setData({
@@ -38,6 +41,9 @@ Page({
     this.play(this.data.songinfo)
   },
   play(song) {
+    if(app.globalData.audioContext) {
+      app.destroy()
+    }
     app.globalData.audioContext = wx.createInnerAudioContext()
     var audioContext = app.globalData.audioContext
     audioContext.src = song.url
@@ -63,7 +69,7 @@ Page({
       setData(this,'_song.isPlay', false)
     }
   },
-  /**
+  /** 
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -114,9 +120,14 @@ Page({
 
   handleClickPlayList() { // 查看列表
     setData(this, 'openplayerlist', true)
-    console.log(this.data.openplayerlist)
   },
-  showPlayList(e) {
+  showPlayList(e) { // 隐藏弹窗
     setData(this, 'openplayerlist', e.detail)
+  },
+  updateSong(e) {
+    // setData(this, 'songinfo', e.detail)
+    app.globalData.songinfo = e.detail
+    this._init()
+    setData(this, 'openplayerlist', false)
   }
 })

@@ -243,6 +243,12 @@ Page({
   hanldeClick(e){ // 点击进入播放页面
     var song = e.currentTarget.dataset.song
     app.globalData.songinfo = song
+    if(app.globalData._songlist){
+      app.globalData._songlist.push(song)
+    }else {
+      app.globalData._songlist = [song]
+    }
+    console.log(app.globalData._songlist)
     wx.navigateTo({
       url: `../../pages/player/player`,
     })
@@ -258,7 +264,7 @@ Page({
   },
   hadleClickRandomAll() { // 随机播放全部
     app.globalData._songlist = this.data.songlist
-    app.globalData.songinfo = this.data.songlist[0]
+    app.globalData.songinfo = this.data.songlist[Math.floor(Math.random() * this.data.songlist.length + 1)-1]
     wx.navigateTo({
       url: `../../pages/player/player`,
     })

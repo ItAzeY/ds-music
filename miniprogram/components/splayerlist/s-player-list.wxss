@@ -1,6 +1,7 @@
 /* components/playerlist/s-player-list.wxss */
+@import '../../style/iconfont/iconfont.wxss';
 
-.player_list_opacity{
+.player_list_opacity {
   position: fixed;
   height: 40vh;
   width: 100%;
@@ -8,7 +9,8 @@
   left: 0;
   background-color: rgba(0, 0, 0, .3);
 }
-.player_list_wapper{
+
+.player_list_wapper {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -16,9 +18,42 @@
   color: #000;
   height: 60vh;
   width: 100%;
+  padding: 20rpx;
   overflow: scroll;
+  box-sizing: border-box;
 }
-.player_list_item{
+
+.player_list_item {
   display: flex;
-  padding: 5rpx;                                            
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+  align-items: center;
+}
+.player_list_item.active, .player_list_item.active text{
+  color: #d43c33;
+}
+
+.player_list_item .item_name {
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  padding-left: 5rpx;
+}
+
+.player_list_item .item_singer {
+  font-size: 30rpx;
+  color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player_list_item .icon-cancel {
+  width: 30rpx;
+  margin-left: auto;
 }

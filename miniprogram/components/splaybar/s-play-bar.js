@@ -5,7 +5,6 @@ Component({
   lifetimes:{
     attached () { // 在组件实例进入页面节点树时执行
      app.setWatching('isPlay', v => {
-       console.log('回调触发了', v)
        this.setData({
          '_song.isPlay': v
        })

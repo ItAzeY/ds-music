@@ -99,7 +99,6 @@ Page({
   onShow: function () {
     // var audioContext = app.globalData.audioContext
     setData(this, '_song', app.globalData._song)
-    console.log(this.data._song)
   },
 
   /**

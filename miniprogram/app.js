@@ -75,5 +75,8 @@ App({
   },
   pause() {
     this.globalData.audioContext.pause()
+  },
+  destroy() {
+    this.globalData.audioContext.destroy()
   }
 })

@@ -13,7 +13,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    _songlist: []
+    _songlist: [],
+    _song: {}
   },
   lifetimes: {
     attached: function() {
@@ -29,13 +30,16 @@ Component({
    */
   methods: {
     _init(){
+      setData(this, '_song', app.globalData.songinfo)
       setData(this, '_songlist', app.globalData._songlist)
     },
     handleClickShow() {
       this.triggerEvent('showPlayList', false)
     },
     handleClickPlayer(e) {
-      console.log(e)
+      var songinfo = e.currentTarget.dataset.song
+      app.globalData.songinfo = songinfo
+      this.triggerEvent('updateSong', songinfo)
     }
   }
 })

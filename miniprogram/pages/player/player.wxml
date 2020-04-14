@@ -9,7 +9,7 @@
         <view class="progres_before">{{common.formatTimeSecond(_song.currentTime)}}</view>
         <van-progress percentage="{{_song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
         <view class="progres_after">{{common.formatTimeSecond(_song.duration)}}</view>
-    </view>
+    </view> isPlay
     <view class="player_control_wapper">
       <view class="icon icon-suiji"></view>
       <view class="icon icon-prev"></view>
@@ -18,5 +18,5 @@
       <view class="icon icon-playlist" bindtap="handleClickPlayList"></view>
     </view>
   </view>
-  <s-player-list wx:if="{{openplayerlist}}" open="{{openplayerlist}}" bind:showPlayList="showPlayList" class="player_list"/>
+  <s-player-list wx:if="{{openplayerlist}}" open="{{openplayerlist}}" bind:showPlayList="showPlayList" bind:updateSong="updateSong" class="player_list"/>
 </view>
