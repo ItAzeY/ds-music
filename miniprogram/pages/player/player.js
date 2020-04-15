@@ -8,18 +8,22 @@ Page({
     songinfo: {},
     audioContext: null,
     _song: {},
-    openplayerlist: false
+    openplayerlist: false,
+    playMode: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
    onLoad: function(options) {
-    this._init()
+     this._init()
+    let that = this;
+    getApp().watch('songinfo',(value) => {setData(that, 'songinfo', value);this._init()})
+    getApp().watch('playMode',(value) => {setData(that, 'playMode', value)})
   },
-  _init(){
-    var app = getApp()
+  _init(){ // 初始化函数
     setData(this, 'songinfo', app.globalData.songinfo)
+    setData(this, 'playMode', app.globalData.playMode)
     this.setData({
       _song: {
         name: app.globalData.songinfo.name,
@@ -124,10 +128,18 @@ Page({
   showPlayList(e) { // 隐藏弹窗
     setData(this, 'openplayerlist', e.detail)
   },
-  updateSong(e) {
-    // setData(this, 'songinfo', e.detail)
+  updateSong(e) { // 在列表中切换歌曲
     app.globalData.songinfo = e.detail
     this._init()
     setData(this, 'openplayerlist', false)
+  },
+  handleClickPrev() { // 上一首
+    app.playPrev()
+  },
+  handleClickNext() { // 下一首
+    app.playNext()
+  },
+  handleClickPlayMode() { // 切换播放方式
+    app.playMode()
   }
 })

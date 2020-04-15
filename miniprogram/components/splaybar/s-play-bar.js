@@ -1,14 +1,11 @@
 var app = getApp()
+import { setData } from '../../utils/common'
 Component({
   /**q
    */
   lifetimes:{
     attached () { // 在组件实例进入页面节点树时执行
-     app.setWatching('isPlay', v => {
-       this.setData({
-         '_song.isPlay': v
-       })
-     })
+     app.setWatching('isPlay', v => {setData(this,'_song.isPlay', v);console.log(this.data._song)})
     },
     detached () { // 在组件实例被从页面节点树移除时执行
 
@@ -42,12 +39,11 @@ Component({
    */
   methods: {
     playToggleChange() {
-      console.log('123')
       app.playToggleChange()
     },
     // 显示播放列表
     showList () {
-      console.log('显示列表')
+      
     }
   }
 })

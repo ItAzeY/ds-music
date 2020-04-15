@@ -14,9 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    // getApp().watch(that.watchBack)
     this._init()
     var topId = options.topId
-    var app = getApp()
     var _this = this
     var dataParams = {
       g_tk: 1928093487,
@@ -190,7 +191,11 @@ Page({
       }
     })
   },
-
+  // watchBack: function (value){ // 回调函数
+  //   this.setData({
+  //     songinfo: value
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -244,14 +249,22 @@ Page({
     var song = e.currentTarget.dataset.song
     app.globalData.songinfo = song
     if(app.globalData._songlist){
-      app.globalData._songlist.push(song)
+      var show = app.globalData._songlist.findIndex(item => item.name === song.name)
+      if(show < 0) {
+        app.globalData._songlist.push(song)
+      }
     }else {
       app.globalData._songlist = [song]
     }
-    console.log(app.globalData._songlist)
+    if(!app.globalData.playMode) {
+      app.globalData.playMode = 1
+    }
     wx.navigateTo({
       url: `../../pages/player/player`,
     })
+  },
+  navigateTo() {
+
   },
   _init(){ // 初始化函数
     var info = app.globalData.rankinfo
@@ -264,7 +277,9 @@ Page({
   },
   hadleClickRandomAll() { // 随机播放全部
     app.globalData._songlist = this.data.songlist
-    app.globalData.songinfo = this.data.songlist[Math.floor(Math.random() * this.data.songlist.length + 1)-1]
+    var songinfo = this.data.songlist[Math.floor(Math.random() * this.data.songlist.length + 1)-1]
+    app.globalData.songinfo = songinfo
+    app.globalData.playMode = 2
     wx.navigateTo({
       url: `../../pages/player/player`,
     })
