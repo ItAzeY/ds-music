@@ -1,4 +1,8 @@
-import { setBarTitle,setData } from '../../utils/common'
+import {
+  setBarTitle,
+  setData
+} from '../../utils/common'
+import { Base64 } from 'js-base64'
 var app = getApp()
 Page({
   /**
@@ -15,13 +19,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-   onLoad: function(options) {
-     this._init()
+  onLoad: function (options) {
+    this._init()
     let that = this;
-    getApp().watch('songinfo',(value) => {setData(that, 'songinfo', value);this._init()})
-    getApp().watch('playMode',(value) => {setData(that, 'playMode', value)})
+    getApp().watch('songinfo', (value) => {
+      setData(that, 'songinfo', value);
+      this._init()
+    })
+    getApp().watch('playMode', (value) => {
+      setData(that, 'playMode', value)
+    })
   },
-  _init(){ // 初始化函数
+  _init() { // 初始化函数
     setData(this, 'songinfo', app.globalData.songinfo)
     setData(this, 'playMode', app.globalData.playMode)
     this.setData({
@@ -29,6 +38,7 @@ Page({
         name: app.globalData.songinfo.name,
         image: app.globalData.songinfo.image,
         url: app.globalData.songinfo.url,
+        mid: app.globalData.songinfo.mid,
         singer: app.globalData.songinfo.singer,
         album: app.globalData.songinfo.album,
         duration: app.globalData.songinfo.duration,
@@ -43,9 +53,10 @@ Page({
     })
     setBarTitle(this.data.songinfo.name)
     this.play(this.data.songinfo)
+    this.getSongLyric()
   },
   play(song) {
-    if(app.globalData.audioContext) {
+    if (app.globalData.audioContext) {
       app.destroy()
     }
     app.globalData.audioContext = wx.createInnerAudioContext()
@@ -59,18 +70,37 @@ Page({
     })
     audioContext.onTimeUpdate(() => {
       var progres = (audioContext.currentTime / audioContext.duration) * 100
-      setData(this, '_song.currentTime',audioContext.currentTime)
-      setData(this, '_song.progres',progres)
+      setData(this, '_song.currentTime', audioContext.currentTime)
+      setData(this, '_song.progres', progres)
+    })
+    audioContext.onEnded(() => {
+      this.handleClickNext()
+    })
+  },
+  getSongLyric() { // 获取歌词方法
+    wx.cloud.callFunction({
+      name: 'lyric',
+      data: {
+        mid: this.data.songinfo.mid
+      },
+      success: (res) =>{
+        debugger
+        var lyric = Base64.decode(res.result.lyric)
+        console.log(lyric, '1')
+      },
+      fail: function(err) {
+        console.log(err,'2')
+      }
     })
   },
   handleClickPlayToggle() { // 切换播放和暂停
     var audioContext = app.globalData.audioContext
-    if(audioContext.paused) {
+    if (audioContext.paused) {
       audioContext.play()
-      setData(this,'_song.isPlay', true)
+      setData(this, '_song.isPlay', true)
     } else {
       audioContext.pause()
-      setData(this,'_song.isPlay', false)
+      setData(this, '_song.isPlay', false)
     }
   },
   /** 

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@vant/weapp": "^1.1.0"
+    "@vant/weapp": "^1.1.0",
+    "js-base64": "^2.5.2"
   }
 }
