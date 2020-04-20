@@ -3,6 +3,7 @@ import {
   setData
 } from '../../utils/common'
 import { Base64 } from 'js-base64'
+import Lyric from 'lyric-parser'
 var app = getApp()
 Page({
   /**
@@ -13,14 +14,16 @@ Page({
     audioContext: null,
     _song: {},
     openplayerlist: false,
-    playMode: null
+    playMode: null,
+    cuurentLyric: null,
+    currentLineNum: 0,
+    currentScroll: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._init()
     let that = this;
     getApp().watch('songinfo', (value) => {
       setData(that, 'songinfo', value);
@@ -33,6 +36,10 @@ Page({
   _init() { // 初始化函数
     setData(this, 'songinfo', app.globalData.songinfo)
     setData(this, 'playMode', app.globalData.playMode)
+    if(this.data.cuurentLyric){
+      this.data.cuurentLyric.stop()
+    }
+    this.getSongLyric()
     this.setData({
       _song: {
         name: app.globalData.songinfo.name,
@@ -53,7 +60,6 @@ Page({
     })
     setBarTitle(this.data.songinfo.name)
     this.play(this.data.songinfo)
-    this.getSongLyric()
   },
   play(song) {
     if (app.globalData.audioContext) {
@@ -84,12 +90,22 @@ Page({
         mid: this.data.songinfo.mid
       },
       success: (res) =>{
-        debugger
         var lyric = Base64.decode(res.result.lyric)
-        console.log(lyric, '1')
+        var cuurentLyric = new Lyric(lyric, ({lineNum, txt}) => {
+          setData(this, 'currentLineNum', lineNum)
+          var scrollNum = 4 * 38
+          if(lineNum >= 4){
+            setData(this, 'currentScroll', lineNum * 38 - scrollNum)
+          }else {
+            setData(this, 'currentScroll', 0)
+          }
+        })
+        setData(this, 'cuurentLyric',cuurentLyric)
+        app.globalData._cuurentLyric = cuurentLyric
+        cuurentLyric.play()
       },
       fail: function(err) {
-        console.log(err,'2')
+        console.log(err)
       }
     })
   },
@@ -102,6 +118,7 @@ Page({
       audioContext.pause()
       setData(this, '_song.isPlay', false)
     }
+    this.data.cuurentLyric.togglePlay()
   },
   /** 
    * 生命周期函数--监听页面初次渲染完成

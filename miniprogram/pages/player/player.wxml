@@ -1,22 +1,29 @@
 <!--pages/play/play.wxml-->
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="player">
-  <view class="player_bg"> 
-    <image src="{{_song.image}}" class="player_bg_image {{ _song.isPlay ? 'around' : ''}}" mode="widthFix"></image>
-  </view>
-  <view class="player_control">
-    <view class="player_control_progres">
-      <view class="progres_before">{{common.formatTimeSecond(_song.currentTime)}}</view>
-      <van-progress percentage="{{_song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
-      <view class="progres_after">{{common.formatTimeSecond(_song.duration)}}</view>
-    </view>
-    <view class="player_control_wapper">
-      <view class="icon {{playMode === 1 ? 'icon-xunhuan' : (playMode === 2 ? 'icon-suiji' : (playMode === 3 ? 'icon-danqu' : ''))}}" catchtap="handleClickPlayMode"></view>
-      <view class="icon icon-prev" catchtap="handleClickPrev"></view>
-      <view class="icon {{_song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="handleClickPlayToggle"></view>
-      <view class="icon icon-next" catchtap="handleClickNext"></view>
-      <view class="icon icon-playlist" bindtap="handleClickPlayList"></view>
-    </view>
-  </view>
-  <s-player-list wx:if="{{openplayerlist}}" open="{{openplayerlist}}" bind:showPlayList="showPlayList" bind:updateSong="updateSong" class="player_list"/>
+	<view class="player_bg">
+		<image src="{{_song.image}}" class="player_bg_image {{ _song.isPlay ? 'around' : ''}}" mode="widthFix"></image>
+		<scroll-view scroll-y="true" scroll-top="{{currentScroll}}" class="scroll_view" scroll-into-view="{{currentLineNum}}" scroll-with-animation="true">
+			<!-- <view class="lyric_wapper"> -->
+				<view wx:for="{{cuurentLyric.lines}}" class="lyric_item {{currentLineNum === index ? 'current' : ''}}">
+					<text class="lyric_text">{{item.txt}}</text>
+				</view>
+			<!-- </view> -->
+		</scroll-view>
+	</view>
+	<view class="player_control">
+		<view class="player_control_progres">
+			<view class="progres_before">{{common.formatTimeSecond(_song.currentTime)}}</view>
+			<van-progress percentage="{{_song.progres}}" show-pivot="{{false}}" class="progres_wapper" />
+			<view class="progres_after">{{common.formatTimeSecond(_song.duration)}}</view>
+		</view>
+		<view class="player_control_wapper">
+			<view class="icon {{playMode === 1 ? 'icon-xunhuan' : (playMode === 2 ? 'icon-suiji' : (playMode === 3 ? 'icon-danqu' : ''))}}" catchtap="handleClickPlayMode"></view>
+			<view class="icon icon-prev" catchtap="handleClickPrev"></view>
+			<view class="icon {{_song.isPlay ? 'icon-pause' : 'icon-play'}}" bindtap="handleClickPlayToggle"></view>
+			<view class="icon icon-next" catchtap="handleClickNext"></view>
+			<view class="icon icon-playlist" bindtap="handleClickPlayList"></view>
+		</view>
+	</view>
+	<s-player-list wx:if="{{openplayerlist}}" open="{{openplayerlist}}" bind:showPlayList="showPlayList" bind:updateSong="updateSong" class="player_list" />
 </view>

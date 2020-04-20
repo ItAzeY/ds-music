@@ -7,6 +7,7 @@ App({
     audioContext: null, // 音乐实例
     _song: null, // 手动维护的音乐信息
     _songlist: [], // 播放列表
+    _cuurentLyric: null
   },
   onLaunch: function () {
     if (!wx.cloud) {
@@ -105,18 +106,18 @@ App({
     var playMode = this.globalData.playMode || 3
     var song = this.globalData.songinfo
     var songlist = this.globalData._songlist
-    if(playMode === 1){
+    if (playMode === 1) {
       var index = songlist.findIndex(item => item.name === song.name)
       var newSong = songlist[index - 1]
-      if(newSong) {
+      if (newSong) {
         this.globalData.songinfo = songlist[index - 1]
-      }else {
+      } else {
         this.globalData.songinfo = songlist[songlist.length - 1]
       }
-    }else if(playMode === 2) {
-      var newSong = songlist[Math.floor(Math.random() * songlist.length + 1)-1]
+    } else if (playMode === 2) {
+      var newSong = songlist[Math.floor(Math.random() * songlist.length + 1) - 1]
       this.globalData.songinfo = newSong
-    } else if(playMode === 3){
+    } else if (playMode === 3) {
       this.globalData.songinfo = song
     }
   },
@@ -124,28 +125,28 @@ App({
     var playMode = this.globalData.playMode || 3
     var song = this.globalData.songinfo
     var songlist = this.globalData._songlist
-    if(playMode === 1){
+    if (playMode === 1) {
       var index = songlist.findIndex(item => item.name === song.name)
       var newSong = songlist[index + 1]
-      if(newSong) {
+      if (newSong) {
         this.globalData.songinfo = songlist[index + 1]
-      }else {
+      } else {
         this.globalData.songinfo = songlist[0]
       }
-    }else if(playMode === 2) {
-      var newSong = songlist[Math.floor(Math.random() * songlist.length + 1)-1]
+    } else if (playMode === 2) {
+      var newSong = songlist[Math.floor(Math.random() * songlist.length + 1) - 1]
       this.globalData.songinfo = newSong
-    } else if(playMode === 3){
+    } else if (playMode === 3) {
       this.globalData.songinfo = song
     }
   },
   playMode() {
     var playMode = this.globalData.playMode
-    if(playMode === 1) {
+    if (playMode === 1) {
       this.globalData.playMode = 2
-    }else if(playMode == 2) {
+    } else if (playMode == 2) {
       this.globalData.playMode = 3
-    }else if(playMode === 3) {
+    } else if (playMode === 3) {
       this.globalData.playMode = 1
     }
   }

@@ -19,6 +19,27 @@
   width: 100%;
   border-radius: 50%;
 }
+
+.scroll_view{
+  height: 45vh;
+}
+.lyric_wapper{
+  height: 45vh;
+  overflow: scroll;
+}
+.lyric_item {
+  padding: 10px 0;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lyric_item.current {
+  color: #d43c33;
+}
 .player_bg_image.around{
   animation: around infinite 15s linear;
 }
